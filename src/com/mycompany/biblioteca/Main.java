@@ -296,4 +296,31 @@ public class Main {
 
         System.out.println("Prestamo registrado correctamente.");
     }
+
+    public static void returnLoan() {
+        System.out.println("=== DEVOLVER PRESTAMO ===");
+
+        System.out.print("Id del préstamo: ");
+        String idloan = sc.nextLine();
+
+        for (Loan loan : loans) {
+
+            if (loan.getIdloan().equalsIgnoreCase(idloan)) {
+
+                if (!loan.getState().equalsIgnoreCase("activo")) {
+                    System.out.println("El préstamo ya fue devuelto.");
+                    return;
+                }
+
+                loan.setState("devuelto");
+                loan.getBook().setAvailable(true);
+
+                System.out.println("Préstamo devuelto correctamente.");
+                return;
+            }
+        }
+
+        System.out.println("Préstamo no encontrado.");
+    }
+
 }

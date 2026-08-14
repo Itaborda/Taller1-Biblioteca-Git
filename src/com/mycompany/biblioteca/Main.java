@@ -2,13 +2,14 @@ package com.mycompany.biblioteca;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDate;
 
 public class Main {
 
     static ArrayList<Client> clients = new ArrayList<>();
     static ArrayList<Book> books = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
-
+    static ArrayList<Loan> loans = new ArrayList<>();
 
     public static void main(String[] args) {
         createClient();
@@ -232,5 +233,67 @@ public class Main {
         }
 
         System.out.println("Libro no encontrado.");
+    }
+
+    public static void createLoan() {
+        System.out.println("=== REGISTRAR PRESTAMO ===");
+
+        System.out.print("Id del préstamo: ");
+        String idloan = sc.nextLine();
+
+        System.out.print("Id del cliente: ");
+        int clientId = Integer.parseInt(sc.nextLine());
+
+        Client selectedClient = null;
+
+        for (Client client : clients) {
+            if (client.getId() == clientId) {
+                selectedClient = client;
+                break;
+            }
+        }
+
+        if (selectedClient == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+
+        System.out.print("Código del libro: ");
+        String bookCode = sc.nextLine();
+
+        Book selectedBook = null;
+
+        for (Book book : books) {
+            if (book.getCode().equalsIgnoreCase(bookCode)) {
+                selectedBook = book;
+                break;
+            }
+        }
+
+        if (selectedBook == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+
+        if (!selectedBook.isAvailable()) {
+            System.out.println("El libro no está disponible.");
+            return;
+        }
+
+        LocalDate date = LocalDate.now();
+        String state = "activo";
+
+        Loan loan = new Loan(
+                idloan,
+                selectedClient,
+                selectedBook,
+                date,
+                state
+        );
+
+        loans.add(loan);
+        selectedBook.setAvailable(false);
+
+        System.out.println("Prestamo registrado correctamente.");
     }
 }

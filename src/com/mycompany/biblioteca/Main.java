@@ -19,6 +19,8 @@ public class Main {
 
         updateClient();
 
+        deleteClient();
+
         System.out.println();
     }
 
@@ -99,4 +101,20 @@ public class Main {
         System.out.println("Cliente no encontrado.");
     }
 
+    public static void deleteClient() {
+        System.out.println("=== ELIMINAR CLIENTE ===");
+
+        System.out.print("Ingrese el id del cliente a eliminar: ");
+        int id = Integer.parseInt(sc.nextLine());
+
+        for (Client client : clients) {
+            if (client.getId() == id) {
+                clients.remove(client);
+                System.out.println("Cliente eliminado correctamente.");
+                return;
+            }
+        }
+
+        System.out.println("Cliente no encontrado.");
+    }
 }

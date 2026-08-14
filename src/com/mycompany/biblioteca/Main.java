@@ -15,6 +15,7 @@ public class Main {
 
         listClients();
 
+        findClient();
     }
 
     public static void createClient() {
@@ -49,5 +50,22 @@ public class Main {
         for (Client client : clients) {
             System.out.println(client);
         }
+    }
+
+    public static void findClient() {
+        System.out.println("=== BUSCAR CLIENTE ===");
+
+        System.out.print("Ingrese el id del cliente: ");
+        int id = Integer.parseInt(sc.nextLine());
+
+        for (Client client : clients) {
+            if (client.getId() == id) {
+                System.out.println("Cliente encontrado:");
+                System.out.println(client);
+                return;
+            }
+        }
+
+        System.out.println("Cliente no encontrado.");
     }
 }

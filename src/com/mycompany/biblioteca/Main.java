@@ -13,6 +13,8 @@ public class Main {
     public static void main(String[] args) {
         createClient();
 
+        System.out.println();
+
         listClients();
 
         findClient();
@@ -26,6 +28,9 @@ public class Main {
 
         System.out.println();
         listBooks();
+
+        System.out.println();
+        findBook();
     }
 
     public static void createClient() {
@@ -157,5 +162,22 @@ public class Main {
         for (Book book : books) {
             System.out.println(book);
         }
+    }
+
+    public static void findBook() {
+        System.out.println("=== BUSCAR LIBRO ===");
+
+        System.out.print("Ingrese el código del libro: ");
+        String code = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getCode().equalsIgnoreCase(code)) {
+                System.out.println("Libro encontrado:");
+                System.out.println(book);
+                return;
+            }
+        }
+
+        System.out.println("Libro no encontrado.");
     }
 }

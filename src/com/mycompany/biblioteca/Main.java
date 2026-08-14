@@ -12,36 +12,181 @@ public class Main {
     static ArrayList<Loan> loans = new ArrayList<>();
 
     public static void main(String[] args) {
-        createClient();
+            int op;
 
-        System.out.println();
+            do {
+                System.out.println("\n=== SISTEMA DE GESTION DE BIBLIOTECA ===");
+                System.out.println("1. Gestion de clientes");
+                System.out.println("2. Gestion de libros");
+                System.out.println("3. Gestion de prestamos");
+                System.out.println("4. Salir");
+                System.out.print("Seleccione una opcion: ");
 
-        listClients();
+                op = Integer.parseInt(sc.nextLine());
 
-        findClient();
+                switch (op) {
 
-        updateClient();
+                    case 1:
+                        menuClients();
+                        break;
 
-        deleteClient();
+                    case 2:
+                        menuBooks();
+                        break;
 
-        createBook();
+                    case 3:
+                        menuLoans();
+                        break;
+
+                    case 4:
+                        System.out.println("Saliendo del sistema...");
+                        break;
+
+                    default:
+                        System.out.println("Opcion no valida.");
+                }
+
+            } while (op!= 4);
 
 
-        System.out.println();
-        listBooks();
 
-        System.out.println();
-        findBook();
+    }
 
-        System.out.println();
-        updateBook();
+    public static void menuClients() {
 
-        System.out.println();
-        deleteBook();
+        int option;
 
-        System.out.println();
-        listLoans();
+        do {
+            System.out.println("\n=== GESTION DE CLIENTES ===");
+            System.out.println("1. Crear cliente");
+            System.out.println("2. Listar clientes");
+            System.out.println("3. Buscar cliente");
+            System.out.println("4. Actualizar cliente");
+            System.out.println("5. Eliminar cliente");
+            System.out.println("6. Volver");
+            System.out.print("Seleccione una opcion: ");
 
+            option = Integer.parseInt(sc.nextLine());
+
+            switch (option) {
+
+                case 1:
+                    createClient();
+                    break;
+
+                case 2:
+                    listClients();
+                    break;
+
+                case 3:
+                    findClient();
+                    break;
+
+                case 4:
+                    updateClient();
+                    break;
+
+                case 5:
+                    deleteClient();
+                    break;
+
+                case 6:
+                    System.out.println("Volviendo al menu principal...");
+                    break;
+
+                default:
+                    System.out.println("Opcion no valida.");
+            }
+
+        } while (option != 6);
+    }
+
+    public static void menuBooks() {
+
+        int option;
+
+        do {
+            System.out.println("\n=== GESTION DE LIBROS ===");
+            System.out.println("1. Crear libro");
+            System.out.println("2. Listar libros");
+            System.out.println("3. Buscar libro");
+            System.out.println("4. Actualizar libro");
+            System.out.println("5. Eliminar libro");
+            System.out.println("6. Volver");
+            System.out.print("Seleccione una opcion: ");
+
+            option = Integer.parseInt(sc.nextLine());
+
+            switch (option) {
+
+                case 1:
+                    createBook();
+                    break;
+
+                case 2:
+                    listBooks();
+                    break;
+
+                case 3:
+                    findBook();
+                    break;
+
+                case 4:
+                    updateBook();
+                    break;
+
+                case 5:
+                    deleteBook();
+                    break;
+
+                case 6:
+                    System.out.println("Volviendo al menu principal...");
+                    break;
+
+                default:
+                    System.out.println("Opcion no valida.");
+            }
+
+        } while (option != 6);
+    }
+
+    public static void menuLoans() {
+
+        int option;
+
+        do {
+            System.out.println("\n=== GESTION DE PRESTAMOS ===");
+            System.out.println("1. Registrar prestamo");
+            System.out.println("2. Devolver prestamo");
+            System.out.println("3. Listar prestamos");
+            System.out.println("4. Volver");
+            System.out.print("Seleccione una opcion: ");
+
+            option = Integer.parseInt(sc.nextLine());
+
+            switch (option) {
+
+                case 1:
+                    createLoan();
+                    break;
+
+                case 2:
+                    returnLoan();
+                    break;
+
+                case 3:
+                    listLoans();
+                    break;
+
+                case 4:
+                    System.out.println("Volviendo al menu principal...");
+                    break;
+
+                default:
+                    System.out.println("Opcion no valida.");
+            }
+
+        } while (option != 4);
     }
 
     public static void createClient() {

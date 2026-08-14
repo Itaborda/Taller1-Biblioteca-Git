@@ -11,6 +11,10 @@ public class Main {
     public static void main(String[] args) {
         createClient();
 
+        System.out.println();
+
+        listClients();
+
     }
 
     public static void createClient() {
@@ -32,5 +36,18 @@ public class Main {
         clients.add(client);
 
         System.out.println("Cliente creado correctamente.");
+    }
+
+    public static void listClients() {
+        System.out.println("=== LISTAR CLIENTES ===");
+
+        if (clients.isEmpty()) {
+            System.out.println("No hay clientes registrados.");
+            return;
+        }
+
+        for (Client client : clients) {
+            System.out.println(client);
+        }
     }
 }

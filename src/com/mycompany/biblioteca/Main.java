@@ -13,8 +13,6 @@ public class Main {
     public static void main(String[] args) {
         createClient();
 
-        System.out.println();
-
         listClients();
 
         findClient();
@@ -25,7 +23,9 @@ public class Main {
 
         createBook();
 
+
         System.out.println();
+        listBooks();
     }
 
     public static void createClient() {
@@ -144,5 +144,18 @@ public class Main {
         books.add(book);
 
         System.out.println("Libro creado correctamente.");
+    }
+
+    public static void listBooks() {
+        System.out.println("=== LISTAR LIBROS ===");
+
+        if (books.isEmpty()) {
+            System.out.println("No hay libros registrados.");
+            return;
+        }
+
+        for (Book book : books) {
+            System.out.println(book);
+        }
     }
 }

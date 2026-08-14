@@ -31,6 +31,10 @@ public class Main {
 
         System.out.println();
         findBook();
+
+        System.out.println();
+        updateBook();
+
     }
 
     public static void createClient() {
@@ -174,6 +178,35 @@ public class Main {
             if (book.getCode().equalsIgnoreCase(code)) {
                 System.out.println("Libro encontrado:");
                 System.out.println(book);
+                return;
+            }
+        }
+
+        System.out.println("Libro no encontrado.");
+    }
+
+    public static void updateBook() {
+        System.out.println("=== ACTUALIZAR LIBRO ===");
+
+        System.out.print("Ingrese el código del libro a actualizar: ");
+        String code = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getCode().equalsIgnoreCase(code)) {
+
+                System.out.print("Nuevo título: ");
+                book.setTitle(sc.nextLine());
+
+                System.out.print("Nuevo año de publicación: ");
+                book.setPublicationYear(sc.nextLine());
+
+                System.out.print("Nuevo autor: ");
+                book.setAuthor(sc.nextLine());
+
+                System.out.print("¿Está disponible? (si/no): ");
+                book.setAvailable(sc.nextLine().equalsIgnoreCase("si"));
+
+                System.out.println("Libro actualizado correctamente.");
                 return;
             }
         }

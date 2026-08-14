@@ -35,6 +35,9 @@ public class Main {
         System.out.println();
         updateBook();
 
+        System.out.println();
+        deleteBook();
+
     }
 
     public static void createClient() {
@@ -207,6 +210,23 @@ public class Main {
                 book.setAvailable(sc.nextLine().equalsIgnoreCase("si"));
 
                 System.out.println("Libro actualizado correctamente.");
+                return;
+            }
+        }
+
+        System.out.println("Libro no encontrado.");
+    }
+
+    public static void deleteBook() {
+        System.out.println("=== ELIMINAR LIBRO ===");
+
+        System.out.print("Ingrese el código del libro a eliminar: ");
+        String code = sc.nextLine();
+
+        for (Book book : books) {
+            if (book.getCode().equalsIgnoreCase(code)) {
+                books.remove(book);
+                System.out.println("Libro eliminado correctamente.");
                 return;
             }
         }

@@ -6,7 +6,7 @@ public class Material {
     private String title;
     private String publicationYear;
 
-    public Material(String code, String title, int publicationYear) {
+    public Material(String code, String title, String publicationYear) {
         this.code = code;
         this.title = title;
         this.publicationYear = publicationYear;
@@ -28,11 +28,21 @@ public class Material {
         this.title = title;
     }
 
-    public int getPublicationYear() {
+    public String getPublicationYear() {
         return publicationYear;
     }
 
-    public void setPublicationYear(int publicationYear) {
+    public void setPublicationYear(String publicationYear) {
         this.publicationYear = publicationYear;
     }
+
+    @Override
+    public String toString() {
+        return "Material{" +
+                "code='" + code + '\'' +
+                ", title='" + title + '\'' +
+                ", publicationYear='" + publicationYear + '\'' +
+                '}';
+    }
 }
+

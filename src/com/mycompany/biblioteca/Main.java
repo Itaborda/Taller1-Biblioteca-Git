@@ -39,6 +39,9 @@ public class Main {
         System.out.println();
         deleteBook();
 
+        System.out.println();
+        listLoans();
+
     }
 
     public static void createClient() {
@@ -323,4 +326,21 @@ public class Main {
         System.out.println("Préstamo no encontrado.");
     }
 
+    public static void listLoans() {
+        System.out.println("=== LISTAR PRESTAMOS ===");
+
+        if (loans.isEmpty()) {
+            System.out.println("No hay préstamos registrados.");
+            return;
+        }
+
+        for (Loan loan : loans) {
+            System.out.println("Id del préstamo: " + loan.getIdloan());
+            System.out.println("Cliente: " + loan.getClient());
+            System.out.println("Libro: " + loan.getBook());
+            System.out.println("Fecha: " + loan.getDate());
+            System.out.println("Estado: " + loan.getState());
+            System.out.println("----------------------------");
+        }
+    }
 }

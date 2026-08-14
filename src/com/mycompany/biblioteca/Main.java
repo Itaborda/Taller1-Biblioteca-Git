@@ -16,6 +16,10 @@ public class Main {
         listClients();
 
         findClient();
+
+        updateClient();
+
+        System.out.println();
     }
 
     public static void createClient() {
@@ -68,4 +72,31 @@ public class Main {
 
         System.out.println("Cliente no encontrado.");
     }
+
+    public static void updateClient() {
+        System.out.println("=== ACTUALIZAR CLIENTE ===");
+
+        System.out.print("Ingrese el id del cliente a actualizar: ");
+        int id = Integer.parseInt(sc.nextLine());
+
+        for (Client client : clients) {
+            if (client.getId() == id) {
+
+                System.out.print("Nuevo nombre: ");
+                client.setName(sc.nextLine());
+
+                System.out.print("Nuevo telefono: ");
+                client.setPhone(sc.nextLine());
+
+                System.out.print("Nuevo correo: ");
+                client.setMail(sc.nextLine());
+
+                System.out.println("Cliente actualizado correctamente.");
+                return;
+            }
+        }
+
+        System.out.println("Cliente no encontrado.");
+    }
+
 }
